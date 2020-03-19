@@ -1,12 +1,27 @@
 import useMeteoApi from "../apiville.js";
 
-Vue.component("meteo", {
+Vue.component('meteo', {
+  props: ["name","main","description","temp","tempF","tempMin","tempMax","pressure","humidity"],
   template: `
   <table class="striped">
        <tbody>
-            <tr> <td>  </td> <td> {{meteo.name}} </td></tr>
-            <tr> <td>  </td> <td> {{meteo.main.temp}} </td></tr>
-            <tr> <td>  </td> <td> {{meteo.timezone}} </td></tr>
+            <tr> <td> {{name}} </td></tr>
+            <tr> <td> {{main}} </td></tr>
+            <tr> <td> {{description}} </td></tr>
+            <tr> <td> {{temp}} °C </td></tr>
+            <tr> <td> {{tempF}} °C </td></tr>
+            <tr> <td> {{tempMin}} °C </td></tr>
+            <tr> <td> {{tempMax}} °C </td></tr>
+            <tr> <td> {{pressure}} hPa </td></tr>
+            <tr> <td> {{humidity}} % </td></tr>
       </tbody>
-  </table>`
-});
+  </table>`,
+methods : {
+ // handleSelected : function() {
+    // this.$emit('film-selected',this.movie.imdbID);
+ // }
+},
+
+})
+                            
+                            
