@@ -3,7 +3,7 @@ Vue.component("app", {
                <search  @search-done="searchCompleted($event)"> </search> 
                <div class="col s4">
                         <div class="row">
-                            <meteo v-for="meteo in meteos" 
+                            <meteo v-for="meteo in meteos"
                             v-bind:name="meteo.name"
                             v-bind:main="meteo.weather[0].main"
                             v-bind:description="meteo.weather[0].description" 
@@ -13,22 +13,43 @@ Vue.component("app", {
                             v-bind:tempMax="meteo.main.temp_max"
                             v-bind:pressure="meteo.main.pressure"
                             v-bind:humidity="meteo.main.humidity"
-                            v-bind:key="meteo.id"> </meteo>
+                            v-bind:lon="meteo.coord.lon"
+                            v-bind:lat="meteo.coord.lat"
+                            v-bind:key="meteo.id"
+                            v-on:brewerys-done="bieresByCity($event)"> </meteo>
                         </div>
                     </div>
+                <div class="col s4">
+                  <div class="row">
+                    <bieres v-for="brewery in brewerys" v-bind:brewery="brewery"> </bieres>
+                </div>
+              </div> 
              </div>`,
             
   data: function() {
     return {
-      meteos:[]
+      meteos:[],
+      brewerys :[]
     };
   },
   methods: {
     searchCompleted: function(data) {
       if(data != undefined){
         this.meteos = [data];
-        console.log(this.meteos);
+        if(data.cod == 404){
+          window.alert("La ville choisie n'existe pas");
+        }
+       console.log(this.meteos);
+      } 
+    },
+    bieresByCity : function(data) {
+      if(data!=undefined){
+        this.brewerys = data;
+        console.log(this.brewerys);
       }
+    
     }
+
+
   }
 });

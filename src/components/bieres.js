@@ -1,11 +1,24 @@
-import useBiereApi from "../apibiere.js";
 
 Vue.component("bieres", {
+  props:["brewery"],
   template: `
   <table class="striped">
-       <tbody>
-            <tr> <td>  </td> <td> {{bieres.}} </td></tr>
-            <tr> <td>  </td> <td> {{}} </td></tr>
-      </tbody>
-  </table>`
-});
+  <tbody>
+       <tr> <td> test</td></tr>
+       <tr> <td>  </td></tr>
+        
+ </tbody>
+ </table>
+ `,
+ 
+  methods :  {
+
+    
+  }
+
+
+})
+
+
+
+
