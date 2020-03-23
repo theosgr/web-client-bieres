@@ -1,6 +1,7 @@
 import useMeteoApi from "../apiville.js";
 import useBieresApi from "../apibiere.js";
 
+//représente une vue lié a une ville, on y affiche les informations météorologique
 Vue.component('meteo', {
   props: ["name","main","description","temp","tempF","tempMin","tempMax","pressure","humidity","lon","lat"],
   template: `
@@ -27,7 +28,8 @@ methods : {
     apiBieres: function() {
     useBieresApi
       .bySearch(this.lat,this.lon)
-      .then(data => this.$emit("brewerys-done", data));
+      .then(data => this.$emit("brewerys-done", data.data));
+      //console.log(this.lat,this.lon);
       
   }
 }

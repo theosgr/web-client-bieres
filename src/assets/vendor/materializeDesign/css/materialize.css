@@ -3,6 +3,7 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ 
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -7581,6 +7582,10 @@ input[type=range]::-ms-thumb {
   height: 48px;
   line-height: 48px;
   padding: 0 32px;
+}
+
+.site:hover {
+  opacity:0.7;
 }
 
 .sidenav li > a:hover {

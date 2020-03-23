@@ -21,7 +21,7 @@ Vue.component("app", {
                     </div>
                 <div class="col s4">
                   <div class="row">
-                    <bieres v-for="brewery in brewerys" v-bind:brewery="brewery"> </bieres>
+                    <bieres v-for="brewery in brewerys" v-bind:key="brewery.id" v-bind:brewery="brewery"> </bieres>
                 </div>
               </div> 
              </div>`,
