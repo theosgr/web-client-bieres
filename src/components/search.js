@@ -8,10 +8,11 @@ Vue.component('search', {
             </form>`,
   data: function() {
     return {
-      nomVille: ""
+      nomVille: "" // nom de la ville entré
     };
   },
   methods: {
+    // on envoie le json en fonction du nom entré dans la barre de recherche
     handleSubmit: function() {
       useVilleApi
         .bySearch(this.nomVille)

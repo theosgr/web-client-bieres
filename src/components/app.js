@@ -1,5 +1,6 @@
-//vue principale appellé dans index.html
-//elle va permettre d'appellé les autres vues quand nécéssaire
+//vue principale appellée dans index.html
+//elle va permettre d'appeller les autres components et récupérer les modeles de données pour pouvoir les manipuler dans d'autres components
+
 
 Vue.component("app", {
   template: `<div  id="app"> 
@@ -24,12 +25,12 @@ Vue.component("app", {
                     </div>
                 <div class="col s4">
                   <div class="row">
-                    <bieres v-for="brewery in brewerys" v-bind:key="brewery.id" v-bind:brewery="brewery" v-on:brewery-selected="beersByBrewery($event)"> </bieres>
+                    <bieres v-for="brewery in brewerys" v-bind:key="brewery.breweryId" v-bind:brewery="brewery" v-on:brewery-selected="beersByBrewery($event)"> </bieres>
                 </div>
               </div> 
               <div class="col s4">
                   <div class="row">
-                    <beers v-for="beer in beers" v-bind:key="beer.id" v-bind:beer="beer"> </beers>
+                    <beers v-for="beer in bieres" v-bind:key="beer.id" v-bind:beer="beer"> </beers>
                   </div>
                 </div>
              </div>`,
@@ -38,10 +39,11 @@ Vue.component("app", {
     return {
       meteos:[],
       brewerys :[],
-      beers:[]
+      bieres:[]
     };
   },
   methods: {
+    // méthodes pour récupérer les données json envoyé par les autres components 
     searchCompleted: function(data) {
       if(data != undefined){
         this.meteos = [data];
@@ -60,7 +62,8 @@ Vue.component("app", {
     },
     beersByBrewery : function(data) {
       if(data!=undefined){
-        this.beers = data;
+        this.bieres = data;
+        console.log(data);
       }
     }
 

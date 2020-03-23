@@ -1,7 +1,7 @@
-import useBiereApi from "../apibiere";
+import useBiereApi from "../apibiere.js";
 
 ////représente une vue lié à une ville où l'on affiche une brasserie
-Vue.component("bieres", {
+Vue.component('bieres', {
   props:["brewery"],
   template: `
   <form @submit.prevent="getBeers">
@@ -24,8 +24,9 @@ Vue.component("bieres", {
   methods :  {
       getBeers : function() {
           useBiereApi
-        	.byId(this.brewery.id)
-        	.then(data => this.$emit("brewery-selected", data.data));      
+        	.byId(this.brewery.breweryId)
+          .then(data => this.$emit("brewery-selected", data.data));    
+          //console.log(this.brewery.breweryId);  
           }
     }
 
