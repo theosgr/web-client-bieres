@@ -1,6 +1,6 @@
 import useVilleApi from "../apiville.js";
 
-//vue permettant la recherche d'une ville
+////représente une vue permettant de recherché une ville
 Vue.component('search', {
   template: `<form  @submit.prevent="handleSubmit">
                     <input type="text" v-model="nomVille"/>

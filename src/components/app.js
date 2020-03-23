@@ -1,3 +1,6 @@
+//vue principale appellé dans index.html
+//elle va permettre d'appellé les autres vues quand nécéssaire
+
 Vue.component("app", {
   template: `<div  id="app"> 
                <search  @search-done="searchCompleted($event)"> </search> 
@@ -21,15 +24,21 @@ Vue.component("app", {
                     </div>
                 <div class="col s4">
                   <div class="row">
-                    <bieres v-for="brewery in brewerys" v-bind:key="brewery.id" v-bind:brewery="brewery"> </bieres>
+                    <bieres v-for="brewery in brewerys" v-bind:key="brewery.id" v-bind:brewery="brewery" v-on:brewery-selected="beersByBrewery($event)"> </bieres>
                 </div>
               </div> 
+              <div class="col s4">
+                  <div class="row">
+                    <beers v-for="beer in beers" v-bind:key="beer.id" v-bind:beer="beer"> </beers>
+                  </div>
+                </div>
              </div>`,
             
   data: function() {
     return {
       meteos:[],
-      brewerys :[]
+      brewerys :[],
+      beers:[]
     };
   },
   methods: {
@@ -45,9 +54,14 @@ Vue.component("app", {
     bieresByCity : function(data) {
       if(data!=undefined){
         this.brewerys = data;
-        console.log(this.brewerys);
+       } else {
+            window.alert("Aucune brasserie aux alentours");
+       }
+    },
+    beersByBrewery : function(data) {
+      if(data!=undefined){
+        this.beers = data;
       }
-    
     }
 
 

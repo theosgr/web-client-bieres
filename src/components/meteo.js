@@ -29,7 +29,7 @@ methods : {
     useBieresApi
       .bySearch(this.lat,this.lon)
       .then(data => this.$emit("brewerys-done", data.data));
-      //console.log(this.lat,this.lon);
+      console.log(this.lat,this.lon);
       
   }
 }
